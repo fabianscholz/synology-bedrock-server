@@ -1,12 +1,11 @@
 FROM ubuntu:latest
 
 RUN apt-get update
-RUN apt-get install -y unzip curl libcurl4 libssl1.0.0 wget
+RUN apt-get install -y unzip curl libcurl4 libssl1.0.0
+ADD https://minecraft.azureedge.net/bin-linux/bedrock-server-1.12.0.28.zip /bedrock_server.zip
+RUN unzip /bedrock_server.zip -d /bedrock-server && rm /bedrock_server.zip
 
-RUN mkdir p /bedrock-server
 WORKDIR /bedrock-server
-RUN wget https://minecraft.azureedge.net/bin-win/bedrock-server-1.12.0.28.zip
-RUN unzip bedrock-server-1.12.0.28.zip
 
 ENV LD_LIBRARY_PATH=.
 CMD ./bedrock_server
