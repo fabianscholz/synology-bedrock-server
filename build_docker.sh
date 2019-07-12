@@ -1,0 +1,1 @@
+docker build -t scralle/synology-bedrock-server .
